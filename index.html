@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaywant Jagtap — Senior Front-End Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sand: #f5f0e8;
+      --linen: #ede8de;
+      --ash: #d6d0c4;
+      --stone: #a09890;
+      --bark: #5c5248;
+      --ink: #2a2420;
+      --terra: #b5714a;
+      --paper: #faf8f4;
+
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 17px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 248, 244, .92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ash);
+    }
+
+    .nav-mark {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      text-decoration: none;
+      color: var(--ink);
+      letter-spacing: .1em;
+    }
+
+    .nav-mark span {
+      color: var(--accent);
+    }
+
+    body.dark .nav-mark {
+      color: #f5f0e8 !important;
+    }
+
+    body.dark .nav-mark span {
+      color: #d39b74 !important;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--stone);
+      text-transform: uppercase;
+      font-size: .72rem;
+      letter-spacing: .14em;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 5rem;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem 4rem;
+    }
+
+    .hero-kicker {
+      display: block;
+      margin-bottom: 1.5rem;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      color: var(--terra);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      color: var(--stone);
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      padding: .9rem 1.8rem;
+      text-transform: uppercase;
+      font-size: .72rem;
+      letter-spacing: .14em;
+    }
+
+    .btn-secondary {
+      text-decoration: none;
+      color: var(--stone);
+      align-self: center;
+      border-bottom: 1px solid var(--ash);
+    }
+
+    .hero-card {
+      border: 1px solid var(--ash);
+      padding: 2.5rem;
+      background: white;
+    }
+
+    .hero-card small {
+      display: block;
+      margin-bottom: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--stone);
+    }
+
+    .hero-card h3 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card p {
+      color: var(--stone);
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      list-style: none;
+    }
+
+    .tech-list li {
+      border: 1px solid var(--ash);
+      padding: .45rem .8rem;
+      font-size: .72rem;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-tag {
+      display: block;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .68rem;
+      color: var(--stone);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2.3rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      color: var(--terra);
+      font-style: italic;
+    }
+
+    .section-body {
+      max-width: 680px;
+      color: var(--stone);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      border: 1px solid var(--ash);
+      padding: 2rem;
+      background: white;
+    }
+
+    .card small {
+      display: block;
+      margin-bottom: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--stone);
+    }
+
+    .card h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: .8rem;
+    }
+
+    .card p {
+      color: var(--stone);
+    }
+
+    .experience {
+      background: var(--linen);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .timeline-item {
+      border-left: 1px solid var(--ash);
+      padding-left: 2rem;
+    }
+
+    .timeline-item h3 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+    }
+
+    .timeline-item span {
+      display: block;
+      margin: .4rem 0 .8rem;
+      color: var(--terra);
+      font-size: .8rem;
+    }
+
+    .timeline-item p {
+      color: var(--stone);
+    }
+
+    /* Contact Section styling */
+    .contact-section {
+      padding: 8rem 0;
+      background: var(--bg);
+    }
+
+    .contact-methods {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: var(--fs-nav);
+      font-weight: var(--fw-medium);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: .9rem 1.6rem;
+      transition: all .25s ease;
+      background: var(--surface);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .social-btn .icon {
+      width: 18px;
+      height: 18px;
+      transition: transform .25s ease;
+    }
+
+    .social-btn:hover .icon {
+      transform: scale(1.15);
+    }
+
+    /* Footer Bottom styling */
+    .footer-bottom {
+      background: #161616;
+      color: #f5f0e8;
+      padding: 3.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark .footer-bottom {
+      background: var(--text) !important;
+      color: var(--bg) !important;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      letter-spacing: .08em;
+      font-weight: var(--fw-normal);
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-copyright {
+      font-size: var(--fs-small);
+      opacity: 0.75;
+      font-weight: var(--fw-light);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .footer-socials a {
+      color: currentColor;
+      opacity: 0.75;
+      transition: all .25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+    .footer-socials a:hover {
+      opacity: 1;
+      color: var(--accent) !important;
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .footer-icon {
+      width: 17px;
+      height: 17px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-methods {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .contact-btn {
+        width: 100%;
+      }
+    }
+
+    @media(max-width:860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    :root {
+      --bg: #faf8f4;
+      --surface: #ffffff;
+      --text: #2a2420;
+      --muted: #6e665f;
+      --border: #d6d0c4;
+      --accent: #b5714a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .04);
+
+      --fs-body: 1rem;
+      --fs-small: .82rem;
+      --fs-nav: .74rem;
+      --fs-h1: clamp(3.5rem, 6vw, 6rem);
+      --fs-h2: clamp(2.5rem, 4vw, 4.2rem);
+      --fs-h3: 1.65rem;
+
+      --fw-light: 300;
+      --fw-normal: 400;
+      --fw-medium: 500;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --surface: #1b1b1b;
+      --text: #f5f0e8;
+      --muted: #b5aea7;
+      --border: #343434;
+      --accent: #d39b74;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    body {
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-size: var(--fs-body);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--surface) !important;
+      border-color: var(--border) !important;
+      box-shadow: var(--shadow);
+    }
+
+    .experience {
+      background: color-mix(in srgb, var(--surface) 92%, var(--bg)) !important;
+    }
+
+    .hero-title {
+      font-size: var(--fs-h1) !important;
+      font-weight: var(--fw-light) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.03em !important;
+    }
+
+    .section-title {
+      font-size: var(--fs-h2) !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.02em !important;
+    }
+
+    .card h3,
+    .hero-card h3,
+    .timeline-item h3 {
+      font-size: var(--fs-h3) !important;
+      font-weight: var(--fw-normal) !important;
+      line-height: 1.2 !important;
+    }
+
+    .hero-sub,
+    .section-body,
+    .card p,
+    .timeline-item p {
+      color: var(--muted) !important;
+      font-size: 1rem !important;
+      line-height: 1.9 !important;
+      max-width: 68ch;
+    }
+
+    .nav-links a,
+    .hero-kicker,
+    .section-tag,
+    .card small {
+      font-size: var(--fs-nav) !important;
+      font-weight: var(--fw-medium) !important;
+      letter-spacing: .16em !important;
+    }
+
+    .tech-list li {
+      font-size: var(--fs-small) !important;
+      font-weight: var(--fw-medium) !important;
+    }
+
+    .btn-primary,
+    .footer-bottom a {
+      font-weight: var(--fw-medium) !important;
+      transition: all .25s ease;
+    }
+
+    .btn-primary:hover,
+    .footer-bottom a:hover {
+      transform: translateY(-2px);
+      opacity: .92;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 999;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow);
+      transition: all .25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    nav {
+      background: color-mix(in srgb, var(--bg) 88%, transparent) !important;
+      border-color: var(--border) !important;
+    }
+
+    .footer-bottom {
+      background: var(--text) !important;
+      color: var(--bg) !important;
+    }
+
+    @media(max-width:860px) {
+      .hero-title {
+        font-size: clamp(2.8rem, 10vw, 4.2rem) !important;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 8vw, 3rem) !important;
+      }
+
+      body {
+        font-size: .97rem !important;
+      }
+    }
+
+
+    .timeline-item {
+      transition: all .25s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(4px);
+    }
+
+    .card {
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+    }
+
+    body.dark .card:hover {
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: white;
+    }
+
+
+    .architecture-timeline {
+      margin-top: 4rem;
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+
+    .arch-item {
+      min-width: 260px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 1.8rem;
+      position: relative;
+      transition: all .25s ease;
+    }
+
+    .arch-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+    }
+
+    .arch-year {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .arch-content h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      margin-bottom: .7rem;
+      font-weight: 400;
+    }
+
+    .arch-content p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2rem;
+    }
+
+    .project-modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 760px;
+      width: 100%;
+      background: var(--surface);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+      max-height: 90vh;
+      overflow: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .project-trigger {
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .modal-content p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#" class="nav-mark">Jaywant <span>Jagtap</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+
+    <div>
+      <span class="hero-kicker">Full Stack Engineer</span>
+
+      <h1 class="hero-title">
+        Crafting elegant<br>
+        digital <em>products</em>
+      </h1>
+
+      <p class="hero-sub">
+        Front-End Engineer with 7+ years of experience designing enterprise-grade web applications using React.js,
+        Angular, TypeScript, JavaScript, HTML5, CSS3, Redux, and modern frontend architecture patterns.
+      </p>
+
+      <div class="hero-actions">
+        <!-- <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#experience" class="btn-secondary">Career Journey</a> -->
+        <a href="https://drive.google.com/file/d/1aq426iz8N0_lGNobTLl9WfRFmQaUOe8R/view?usp=sharing" target="_blank"
+          class="btn-primary" download>Download Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+
+      <small>Core Expertise</small>
+
+      <h3>Full-Stack Product Engineering with Frontend Excellence</h3>
+
+      <p>
+        Specialized in designing premium frontend experiences and scalable full-stack systems across fintech, insurance,
+        analytics, and enterprise applications. Strong focus on React.js, Angular, TypeScript, performance optimization,
+        state architecture, accessibility, and modern design systems while contributing across backend APIs and platform
+        engineering.
+      </p>
+
+      <ul class="tech-list">
+        <li>React.js</li>
+        <li>Angular</li>
+        <li>Next.js</li>
+        <li>FastAPI</li>
+        <li>Spring Boot</li>
+        <li>NgRx</li>
+        <li>Redux</li>
+        <li>TypeScript</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+  <section id="about">
+    <div class="container">
+
+      <span class="section-tag">About</span>
+
+      <h2 class="section-title">
+        Designing premium<br>
+        digital <em>experiences</em>
+      </h2>
+
+      <p class="section-body">
+        I build high-performance digital products where frontend engineering, product thinking, and user experience
+        converge. My work emphasizes elegant interfaces, scalable architecture, accessibility, and interaction quality
+        across enterprise fintech, insurance, and analytics platforms.
+      </p>
+
+      <div class="grid">
+
+        <div class="card project-trigger">
+          <small>Frontend Engineering</small>
+          <h3>Performance & Architecture</h3>
+          <p>
+            Built highly componentized applications using React.js and Angular with reusable architecture, performance
+            optimization, and scalable UI systems.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Leadership</small>
+          <h3>Code Reviews & Mentorship</h3>
+          <p>
+            Mentored junior developers, reviewed frontend architecture decisions, and contributed to engineering
+            standards and scalable development practices.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Enterprise Systems</small>
+          <h3>Large-Scale Applications</h3>
+          <p>
+            Worked on payment systems, insurance platforms, and enterprise applications supporting millions of users
+            with responsive and accessible interfaces.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Collaboration</small>
+          <h3>Cross-Functional Teams</h3>
+          <p>
+            Collaborated closely with product owners, backend engineers, designers, and QA teams to deliver high-quality
+            user experiences.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="philosophy">
+    <div class="container">
+
+      <span class="section-tag">Design Philosophy</span>
+
+      <h2 class="section-title">
+        Frontend craftsmanship<br>
+        meets <em>engineering precision</em>
+      </h2>
+
+      <p class="section-body">
+        I believe exceptional frontend engineering is invisible when done right. Every interaction, transition, layout
+        rhythm, and visual hierarchy should feel intuitive, performant, and purposeful. My approach combines scalable
+        architecture with refined user experience principles to create interfaces that are both technically robust and
+        visually effortless.
+      </p>
+
+      <div class="grid">
+
+        <div class="card project-trigger">
+          <small>Experience Design</small>
+          <h3>Interaction First Thinking</h3>
+          <p>
+            Interfaces should communicate clarity before complexity. I prioritize intuitive flows, meaningful motion,
+            accessibility, and responsive behavior across every product experience.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Frontend Systems</small>
+          <h3>Scalable Design Architecture</h3>
+          <p>
+            Building reusable components, state-driven UI systems, and scalable frontend patterns that support rapid
+            iteration without compromising consistency or maintainability.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+
+      <span class="section-tag">Projects</span>
+
+      <h2 class="section-title">
+        Selected work built<br>
+        with <em>precision</em>
+      </h2>
+
+      <div class="grid">
+
+        <div class="card project-trigger">
+          <small>React.js · TypeScript</small>
+          <h3>Wholesale Affiliate Platform</h3>
+          <p>
+            Built scalable Shopify-integrated applications using React.js, Redux-Thunk, and TypeScript while improving
+            maintainability and frontend performance.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Material UI</small>
+          <h3>Merchant Portal</h3>
+          <p>
+            Developed responsive frontend interfaces and reusable components from wireframes using Material UI and
+            React.js.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Redux · Node.js</small>
+          <h3>Membership Application</h3>
+          <p>
+            Designed reusable frontend architecture integrated with backend microservices and optimized global state
+            management.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>ReactJS · Rsuite · Postman</small>
+          <h3>Upsell Feature</h3>
+          <p>
+            Developed a custom storefront cart experience using ReactJS and the Rsuite component library, implementing
+            business-specific upsell workflows and dynamic UI interactions. Designed responsive layouts, integrated
+            frontend business logic, and validated API endpoints using Postman to ensure seamless cart and checkout
+            functionality.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>Angular · React.js · FastAPI</small>
+          <h3>Insurance Product Organization Analytics Platform</h3>
+          <p>
+            Engineered a subsidiary-wide analytics dashboard for a global insurance organization serving over 14 million
+            clients, consolidating operational and financial data into a centralized analytics platform. Integrated
+            Power BI embedded analytics into Angular and React applications, implemented NgRx-powered state
+            architecture, optimized API consumption patterns, and developed FastAPI backend services with
+            high-performance SQL procedures to improve reporting efficiency and large-scale dataset rendering.
+          </p>
+        </div>
+
+        <div class="card project-trigger">
+          <small>React.js · Spring Boot · React-Redux</small>
+          <h3>Card Payments On-Boarding Dashboard</h3>
+          <p>
+            Built dynamic onboarding and administration interfaces for merchant payment lifecycle management using
+            React.js and Redux. Developed secure payment profile abstraction workflows, offline wallet activation flows
+            with biometric and POS integrations, and contributed to backend reliability through comprehensive JUnit 5
+            and Mockito test suites across Spring Boot services.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- <section id="architecture">
+    <div class="container">
+
+      <span class="section-tag">Tech Stack & Architecture</span>
+
+      <h2 class="section-title">
+        Evolving through<br>
+        modern <em>engineering systems</em>
+      </h2>
+
+      <div class="architecture-timeline">
+
+        <div class="arch-item">
+          <div class="arch-year">2019</div>
+          <div class="arch-content">
+            <h3>Frontend Foundations</h3>
+            <p>React.js, Redux, HTML5, CSS3, JavaScript ES6+, responsive UI systems, Shopify applications.</p>
+          </div>
+        </div>
+
+        <div class="arch-item">
+          <div class="arch-year">2021</div>
+          <div class="arch-content">
+            <h3>Enterprise UI Architecture</h3>
+            <p>TypeScript adoption, scalable component systems, Material UI, performance optimization, reusable design
+              systems.</p>
+          </div>
+        </div>
+
+        <div class="arch-item">
+          <div class="arch-year">2023</div>
+          <div class="arch-content">
+            <h3>Large Scale Systems</h3>
+            <p>NgRx, React-Redux, analytics dashboards, API orchestration, frontend scalability for millions of users.
+            </p>
+          </div>
+        </div>
+
+        <div class="arch-item">
+          <div class="arch-year">2025</div>
+          <div class="arch-content">
+            <h3>Full Stack Product Engineering</h3>
+            <p>FastAPI, Spring Boot, Power BI integrations, payment systems, offline-first workflows, secure onboarding
+              systems.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section> -->
+
+  <section class="experience" id="experience">
+
+    <div class="container">
+
+      <span class="section-tag">Experience</span>
+
+      <h2 class="section-title">
+        Seven years of<br>
+        frontend <em>engineering</em>
+      </h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Zensar Technologies Pvt. Ltd. Pune</h3>
+          <span>Senior Software Engineer · Oct 2024 — Present</span>
+          <p>
+            Developing scalable payment and insurance platforms using React.js, Angular, FastAPI, and enterprise
+            frontend architecture practices.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Birlasoft Pvt. Ltd. Pune</h3>
+          <span>Senior Software Developer · Jul 2022 — Oct 2024</span>
+          <p>
+            Built enterprise-scale applications supporting more than 18 million users with focus on responsive UI
+            systems and reusable frontend components.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>UpThink EdTech Pvt. Ltd. Pune</h3>
+          <span>Consultant Software Engineer SME · Dec 2019 — Aug 2022</span>
+          <p>
+            Developed React.js applications for e-commerce and educational products while mentoring frontend developers
+            and improving engineering workflows.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <span class="section-tag">Contact</span>
+
+      <h2 class="section-title">
+        Let’s create<br>
+        exceptional <em>products</em>.
+      </h2>
+
+      <p class="section-body">
+        Available for senior frontend engineering opportunities, scalable UI architecture consulting, and product
+        collaborations. Reach out to discuss how we can work together.
+      </p>
+
+      <div class="contact-methods">
+        <a href="mailto:jaywantjagtap96@gmail.com" class="btn-primary contact-btn">
+          Get In Touch
+        </a>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/jaywantjagtap" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/justice221" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-bottom">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        Jaywant <span>Jagtap</span>
+      </div>
+      <p class="footer-copyright">
+        © 2026 Jaywant Jagtap. All rights reserved.
+      </p>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/jaywantjagtap" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="https://github.com/jaywantjagtap" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    ☾
+  </button>
+
+  <script>
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+        toggle.innerHTML = '☀';
+      } else {
+        body.classList.remove('dark');
+        toggle.innerHTML = '☾';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      applyTheme(prefersDark.matches ? 'dark' : 'light');
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark');
+      const next = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+
+    prefersDark.addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+
+
+  <div class="project-modal" id="projectModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+
+      <h2>Project Case Studies</h2>
+
+      <p>
+        These projects focus on frontend scalability, enterprise UX systems, state architecture, API orchestration, and
+        high-performance interfaces built for fintech, analytics, and insurance platforms.
+      </p>
+
+      <p>
+        Core engineering priorities included reducing rendering overhead, improving interaction responsiveness,
+        optimizing API consumption patterns, and designing reusable component systems capable of scaling across multiple
+        business units.
+      </p>
+
+      <p>
+        Frontend stacks included React.js, Angular, NgRx, Redux, FastAPI, Spring Boot, Power BI Embedded Analytics, and
+        enterprise UI architecture patterns designed for millions of users.
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.getElementById('modalClose');
+
+    document.querySelectorAll('.project-trigger').forEach(card => {
+      card.addEventListener('click', () => {
+        modal.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+
+</html>
